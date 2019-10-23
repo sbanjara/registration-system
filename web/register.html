@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        
+        <title>Register Attendee</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="scripts/Project1.js"></script>
+        
+    </head>
+    
+    <body>
+
+        <a href="index.html">Search registrations</a>
+        <a href="test1.html">Register Attendee</a>
+        <br></br>
+        
+        <form name="registrationform" id="registrationform" action="#">
+            
+            <fieldset>
+                
+                <legend>Search registrations</legend>
+                
+                <p>
+                    <label for="input">First Name:</label>
+                    <input type="text" name="firstname" id="firstname">
+                </p>
+                
+                <p>
+                    <label for="input">Last Name:</label>
+                    <input type="text" name="lastname" id="lastname">
+                </p>
+                
+                <p>
+                    <label for="input">How your name will be displayed:</label>
+                    <input type="text" name="displayname" id="displayname">
+                </p>
+                
+                <p>
+                    <label for="input">Select Session:</label>
+                    
+                    <select id="session">
+                    
+                        <option value="session1">Session 1</option>
+                        <option value="session2">Session 2</option>
+                        <option value="session3">Session 3</option>
+                        <option value="session4">Session 4</option>
+                    
+                    </select>
+                </p>
+                
+                <input type="button" value="Submit" onclick="">
+                
+            </fieldset>
+                    
+        </form>
+        
+        <div id="resultsarea">
+            
+            <p id="version"></p>
+            
+        </div>
+        
+        <script type="text/javascript">
+
+            $(document).ready( Project1.init );
+
+        </script>
+        
+    </body>
+    
+</html>
