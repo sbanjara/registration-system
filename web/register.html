@@ -43,12 +43,12 @@
                 <p>
                     <label for="input">Select Session:</label>
                     
-                    <select id="session">
+                    <select name="session" id="session">
                     
-                        <option value="session1">Session 1</option>
-                        <option value="session2">Session 2</option>
-                        <option value="session3">Session 3</option>
-                        <option value="session4">Session 4</option>
+                        <option value="1">Session 1</option>
+                        <option value="2">Session 2</option>
+                        <option value="3">Session 3</option>
+                        <option value="4">Session 4</option>
                     
                     </select>
                 </p>
@@ -59,15 +59,12 @@
                     
         </form>
         
-        <div id="resultsarea">
-            
-            <p id="version"></p>
-            
-        </div>
+        <div id="output"> </div>
         
         <script type="text/javascript">
 
             $(document).ready( Project1.init );
+            $('#displayname').change($('#firstname').val() + $('$lastname').val());
 
         </script>
         

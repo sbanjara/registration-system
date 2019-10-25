@@ -137,34 +137,35 @@ public class Database {
     
     public String putDataonDatabase(String firstname, String lastname, String displayname, int session) throws SQLException {
         
-        int id = 0;
+        int id = 0, result = 0;
         String query;
-        String result = "";
-        boolean hasresults;
+        String results = "";
                 
         Connection conn = getConnection();
         PreparedStatement pstatement = null;
-        ResultSet resultset = null;
+        ResultSet keys = null;
         JSONObject json = new JSONObject();
         
         try {
             
             query = "INSERT INTO registrations(firstname, lastname, displayname, sessionid)"
-                    + "VALUES('" + firstname + "', '" + lastname + "', '" + displayname + "', '" + session + "')";
-            pstatement = conn.prepareStatement(query);
+                    + "VALUES(?,?,?,?)";
             
-            query = "SELECT* FROM registrations WHERE firstname = ?, lastname = ?, displayname = ?, sessionid = ?";
+            pstatement = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
             
-            pstatement = conn.prepareStatement(query);
-            if(firstname != null && lastname != null && displayname != null && session > 0)
-                pstatement.setString(4,"'" + firstname + "', '" + lastname + "', '" + displayname + "', '" + session + "'");
+            pstatement.setString(1,firstname);
+            pstatement.setString(2, lastname);
+            pstatement.setString(3, displayname);
+            pstatement.setInt(4,session);
             
-            hasresults = pstatement.execute();
+            result = pstatement.executeUpdate();
             
-            if(hasresults) {
+            if(result == 0) {
                 
-                resultset = pstatement.getResultSet();
-                id = resultset.getInt("id");
+                keys = pstatement.getGeneratedKeys();
+                if(keys.next()) {
+                    id = keys.getInt(1);
+                }
                  
             }
             
@@ -175,7 +176,7 @@ public class Database {
             json.put("registration_code", registration_code);
             json.put("displayname", displayname);
             
-            result = JSONValue.toJSONString(json);
+            results = JSONValue.toJSONString(json);
             
         }
         
@@ -185,7 +186,7 @@ public class Database {
         
         finally {
             
-            if (resultset != null) { try { resultset.close(); resultset = null; } catch (Exception e) {} }
+            if (keys != null) { try { keys.close(); keys = null; } catch (Exception e) {} }
             
             if (pstatement != null) { try { pstatement.close(); pstatement = null; } catch (Exception e) {} }
             
@@ -193,7 +194,7 @@ public class Database {
             
         }
         
-        return result.trim();
+        return results.trim();
     
     }
        

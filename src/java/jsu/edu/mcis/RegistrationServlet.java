@@ -15,28 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "Registration", urlPatterns = {"/registration"})
 public class RegistrationServlet extends HttpServlet {
-
-   
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-        response.setContentType("application/json;charset=UTF-8");
-        
-        try (PrintWriter out = response.getWriter()) {
-            
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Registration</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Registration at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            
-        }
-    }
-
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -44,13 +22,18 @@ public class RegistrationServlet extends HttpServlet {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        processRequest(request, response);
-        
+ 
         Database db = new Database();
+        
         try {
+            
             out.println(db.getDataAsTable(Integer.parseInt(request.getParameter("session"))));
-        } catch (SQLException ex) {
+            
+        } 
+        catch (SQLException ex) {
+            
             Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
     }
@@ -62,14 +45,19 @@ public class RegistrationServlet extends HttpServlet {
         
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        processRequest(request, response);
         
         Database db = new Database();
+        
         try {
+            
             out.println(db.putDataonDatabase(request.getParameter("firstname"), request.getParameter("lastname"),
                     request.getParameter("displayname"),Integer.parseInt(request.getParameter("session"))));
-        } catch (SQLException ex) {
+            
+        } 
+        catch (SQLException ex) {
+            
             Logger.getLogger(RegistrationServlet.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
         
     }
@@ -77,7 +65,7 @@ public class RegistrationServlet extends HttpServlet {
    
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet to handle registration.";
     }
 
 }

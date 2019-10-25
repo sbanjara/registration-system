@@ -34,25 +34,33 @@ var Project1 = ( function() {
 
             return false;
 
-        }
+        },
+        
+        get_code: function(result) {
+            
+            var s = "<p>Congratulations! You have successfully registered as: " + result["displayname"] + "</p>";
+            s += "<p>Your registration code is: " + result["registration_code"] + "</p>";
+            $("#output").html(s);
+            
+        },
         
         registration: function() {
+            
+            var that = this;
             
             $.ajax({
 
                 url: 'RegistrationServlet',
                 method: 'POST',
-                data: $('#registrationform').serialize(),
+                dataType: 'json',
 
                 success: function(response) {
 
-                    $("#resultsarea").html(response);
+                    that.get_code(response);
 
                 }
 
             });
-
-            return false;
             
         }
 
