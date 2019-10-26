@@ -53,7 +53,7 @@
                     </select>
                 </p>
                 
-                <input type="button" value="Submit" onclick="">
+                <input type="button" value="Submit" onclick="Project1.registration();">
                 
             </fieldset>
                     
@@ -64,7 +64,9 @@
         <script type="text/javascript">
 
             $(document).ready( Project1.init );
-            $('#displayname').change($('#firstname').val() + $('$lastname').val());
+            $('#displayname').change(function(){
+                $('#firstname').val() + " " + $('#lastname').val();
+            });
 
         </script>
         

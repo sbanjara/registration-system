@@ -58,67 +58,63 @@ public class Database {
      
             pstatement = connection.prepareStatement(query);
             if(session > 0 && session < 5)
-                pstatement.setString(1, "' " + session + " '");
+                pstatement.setInt(1,session);
             
             hasresults = pstatement.execute();
-            
-            while ( hasresults || pstatement.getUpdateCount() != -1 ) {  
-                
-                if ( hasresults ) {
 
-                    resultset = pstatement.getResultSet();
+            if ( hasresults ) {
 
-                    metadata = resultset.getMetaData();
+                resultset = pstatement.getResultSet();
 
-                    int numberOfColumns = metadata.getColumnCount();
+                metadata = resultset.getMetaData();
 
-                    table += "<table border=\"1\">";
-                    tableheading = "<tr>";
+                int numberOfColumns = metadata.getColumnCount();
 
-                    System.out.println("*** Number of Columns: " + numberOfColumns);
+                table += "<table border=\"1\">";
+                tableheading = "<tr>";
+
+                System.out.println("*** Number of Columns: " + numberOfColumns);
+
+                for (int i = 1; i <= numberOfColumns; i++) {
+
+                    key = metadata.getColumnLabel(i);
+
+                    tableheading += "<th>" + key + "</th>";
+               
+                }
+
+                while (resultset.next()) {
+                    
+                    tablerow = "<tr>";
 
                     for (int i = 1; i <= numberOfColumns; i++) {
 
-                        key = metadata.getColumnLabel(i);
+                        value = resultset.getString(i);
 
-                        tableheading += "<th>" + key + "</th>";
-
-                    }
-
-                    while (resultset.next()) {
-
-                        tablerow = "<tr>";
-
-                        for (int i = 1; i <= numberOfColumns; i++) {
-
-                            value = resultset.getString(i);
-
-                            if (resultset.wasNull()) {
-                                tablerow += "<td></td>";
-                            }
-
-                            else {
-                                tablerow += "<td>" + value + "</td>";
-                            }
-
+                        if (resultset.wasNull()) {
+                            tablerow += "<td></td>";
                         }
 
-                        tablerow += "</tr>";
-
-                        table += tablerow;
+                        else {
+                            tablerow += "<td>" + value + "</td>";
+                        }
 
                     }
 
-                    table += "</table><br />";
+                    tablerow += "</tr>";
+
+                    table += tablerow;
 
                 }
+
+                table += "</table><br />";
 
             }
                
         }
         
         catch (Exception e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
         
         finally {
@@ -169,7 +165,7 @@ public class Database {
                  
             }
             
-            String code = String.format("%07d",id);
+            String code = String.format("%06d",id);
             String registration_code = "R";
             registration_code += code;
        

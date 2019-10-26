@@ -1,16 +1,12 @@
 
 package jsu.edu.mcis;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 
 @WebServlet(name = "Registration", urlPatterns = {"/registration"})
@@ -27,7 +23,7 @@ public class RegistrationServlet extends HttpServlet {
         
         try {
             
-            out.println(db.getDataAsTable(Integer.parseInt(request.getParameter("session"))));
+            out.println( db.getDataAsTable( Integer.parseInt( request.getParameter("session") ) ) );
             
         } 
         catch (SQLException ex) {

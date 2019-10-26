@@ -20,7 +20,7 @@ var Project1 = ( function() {
 
             $.ajax({
 
-                url: 'RegistrationServlet',
+                url: 'registration',
                 method: 'GET',
                 data: $('#searchform').serialize(),
 
@@ -36,7 +36,7 @@ var Project1 = ( function() {
 
         },
         
-        get_code: function(result) {
+        registration_confirmation: function(result) { 
             
             var s = "<p>Congratulations! You have successfully registered as: " + result["displayname"] + "</p>";
             s += "<p>Your registration code is: " + result["registration_code"] + "</p>";
@@ -50,13 +50,13 @@ var Project1 = ( function() {
             
             $.ajax({
 
-                url: 'RegistrationServlet',
+                url: 'registration',
                 method: 'POST',
                 dataType: 'json',
 
                 success: function(response) {
 
-                    that.get_code(response);
+                    that.registration_confirmation(response);
 
                 }
 
