@@ -14,7 +14,8 @@ public class RegistrationServlet extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException 
+    {
         
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -37,7 +38,8 @@ public class RegistrationServlet extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException 
+    {
         
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
@@ -46,8 +48,9 @@ public class RegistrationServlet extends HttpServlet {
         
         try {
             
-            out.println(db.putDataonDatabase(request.getParameter("firstname"), request.getParameter("lastname"),
-                    request.getParameter("displayname"),Integer.parseInt(request.getParameter("session"))));
+            out.println( db.putDataonDatabase( request.getParameter("firstname"), request.getParameter("lastname"),
+                    request.getParameter("displayname"), Integer.parseInt( request.getParameter("session") ) ) );
+            
             
         } 
         catch (SQLException ex) {
@@ -57,11 +60,11 @@ public class RegistrationServlet extends HttpServlet {
         }
         
     }
-
+    
    
     @Override
     public String getServletInfo() {
-        return "Servlet to handle registration.";
+        return "Servlet to handle registration process.";
     }
 
 }

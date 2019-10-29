@@ -1,20 +1,12 @@
 package jsu.edu.mcis;
 
 import java.io.IOException;
-import java.sql.ResultSetMetaData;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Iterator;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+import java.sql.*;
+import javax.naming.*;
 import javax.servlet.ServletException;
 import javax.sql.DataSource;
 
-import org.json.simple.JSONObject;
-import org.json.simple.JSONValue;
+import org.json.simple.*;
 
 public class Database {
     
@@ -136,7 +128,7 @@ public class Database {
         int id = 0, result = 0;
         String query;
         String results = "";
-                
+      
         Connection conn = getConnection();
         PreparedStatement pstatement = null;
         ResultSet keys = null;
@@ -156,7 +148,7 @@ public class Database {
             
             result = pstatement.executeUpdate();
             
-            if(result == 0) {
+            if(result == 1) {
                 
                 keys = pstatement.getGeneratedKeys();
                 if(keys.next()) {
