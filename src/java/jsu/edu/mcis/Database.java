@@ -65,8 +65,6 @@ public class Database {
                 table += "<table border=\"1\">";
                 tableheading = "<tr>";
 
-                System.out.println("*** Number of Columns: " + numberOfColumns);
-
                 for (int i = 1; i <= numberOfColumns; i++) {
 
                     key = metadata.getColumnLabel(i);
