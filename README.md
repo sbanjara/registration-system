@@ -4,8 +4,7 @@
   
   When the user launches this application and searches for the registrations, the page looks like below,
   
-  ![picture](registration2.PNG)
-  
+  ![picture](registration1.PNG)
   And when the user registers, the page looks like below,
   
-  ![picture](registrations1.PNG)
+  ![picture](registration2.PNG)
