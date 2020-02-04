@@ -5,16 +5,16 @@
 ## 
   When the user launches this application and searches for the registrations, the webpage looks like below,
   
-  ![picture](registration1.PNG)
+  ![picture](registrationdesk1.PNG)
   
   And the user registration interface looks like below,
   
-  ![picture](registration2.PNG)
+  ![picture](registrationdesk2.PNG)
 
 ##
 ## Running this Project
    To run this project, you'll need Java, MySQL, Apache Tomcat Web Server, and Netbeans. Once you have all these tools ready, you can clone this project by running this command
 ##
-            **git clone https://github.com/sbanjara/registration-system**
+            git clone https://github.com/sbanjara/registration-system
 ##
    After cloning this project in your workstation, you can create a web application project in Netbeans using existing project files (i.e. the cloned files).
