@@ -9,7 +9,7 @@
   
   And the user registration interface looks like below,
   
-  ![picture](registrationdesk2.PNG)
+  ![picture](registrationdesk3.PNG)
 
 ##
 ## Running this Project
