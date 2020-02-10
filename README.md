@@ -1,7 +1,7 @@
 # Registration System
 ##
 ## Description
-  This is a web based front desk registration system via which an user can register and search the registrations. 
+  This is a web based registration system via which a user can register and search the registrations. 
 ## 
   For instance, a company is conducting mandatory training classes for all of its employees; these training classes will be divided into four sessions. This application will be used at the Registration Desk to retrieve the list of attendees who have already registered for each session. There will also be a registration screen to allow last-minute attendees to register at the desk.
 ##
