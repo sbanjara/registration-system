@@ -22,3 +22,19 @@ The front end is written in HTML and the server-side operations are written in J
             git clone https://github.com/sbanjara/registration-system
 ##
    After cloning this project in your workstation, you can create a web application project in Netbeans using existing project files (i.e. the cloned files).
+
+##
+## Configuring the Database for the Database Pooling
+   To run this application, you'll need to import the application database (**registration_db.sql**). After importing the database, you'll need to create database account for it, and grant this account the appropriate permissions in MySQL. To do this, please run the following command from an SQL client while logged in to MySQL as root:
+ ##
+         source C:\USER\Desktop\registration_db.sql ( It assumes the location of sql file is in Desktop. It may be different for you.)
+         
+         create user 'db_user'@'localhost' identified by 'password';
+         grant all on registration_db.* to 'db_user'@'localhost';
+         flush privileges;
+ ##
+   The **"db_user"** is for the database pool.
+ 
+ ##
+ ## Structure
+
